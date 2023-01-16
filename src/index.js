@@ -31,7 +31,7 @@
 // ];
 
 
-module.exports.decode = function (wordMorse) {
+function decode(expr) {
 
     const alphabet = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g',
@@ -59,9 +59,13 @@ module.exports.decode = function (wordMorse) {
 
     let result = '';
 
-    for (let i = 0; i < wordMorse.length; i += 10) {
-        let word = wordMorse.slice(i, i + 10);
+    for (let i = 0; i < expr.length; i += 10) {
+        let word = expr.slice(i, i + 10);
         result += alphabet[morseToNumbersAlphabet.findIndex(item => item === word)];
     }
     return result
+}
+
+module.exports = {
+    decode
 }
